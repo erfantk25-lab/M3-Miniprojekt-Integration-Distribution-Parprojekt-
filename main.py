@@ -15,7 +15,7 @@ def health():
     return {"status": "healthy"}
 
 @app.post("/predict")
-def predict(data: dict):  # ← Ändrat här!
+def predict(data: dict):
     try:
         if "image" not in data:
             return {"error": "Missing 'image' key in data"}
@@ -23,7 +23,7 @@ def predict(data: dict):  # ← Ändrat här!
         # Tar emot bild från json
         image = data["image"]
         
-        if len(image) != 32*32*3:
+        if len(image) != 3072:
             return {"error": f"Invalid image size. Expected 3072, got {len(image)}"}
         
         # Omvandla till rätt format [1, 3, 32, 32]
