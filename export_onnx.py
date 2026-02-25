@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import torch    
 import torch.onnx
 import os
@@ -41,3 +42,13 @@ def export_model():
         print(f"Error: Failed to create ONNX model file '{onnx_path}'.")
 if __name__ == "__main__":
     export_model()
+=======
+import torch as torch
+import sys
+sys.path.append('./src')
+from model import simpleCNN
+
+#Ladda modellen
+model = simpleCNN()
+model.load_state_dict(torch.load('./model_weights.pth'))
+>>>>>>> 11f98a281f8a4293ada0600065f5f9b55a5b7e5e
