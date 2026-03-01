@@ -23,7 +23,7 @@ except Exception as e:
 class imagedata(BaseModel):
     data: list [float]
 
-
+# Define the root endpoint
 @app.get("/")
 def read_root():
     return {"message": "Welcome to the CIFAR-10 Image Classification API! Use the /predict endpoint to classify images."}   
