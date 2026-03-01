@@ -4,7 +4,7 @@ import numpy as np
 
 app = FastAPI()
 #Ladda ONNX-modellen
-model = ort.InferenceSession("model/simplecnn.onnx")
+model = ort.InferenceSession("model.onnx")
 
 @app.get("/")
 def root():
@@ -15,7 +15,7 @@ def health():
     return {"status": "healthy"}
 
 @app.post("/predict")
-def predict(data: dict):  # ← Ändrat här!
+def predict(data: dict): 
     try:
         if "image" not in data:
             return {"error": "Missing 'image' key in data"}
