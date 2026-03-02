@@ -3,7 +3,8 @@ import onnxruntime as ort
 import numpy as np
 
 app = FastAPI()
-#Ladda ONNX-modellen
+
+# Ladda ONNX-modellen
 model = ort.InferenceSession("model.onnx")
 
 @app.get("/")
@@ -20,16 +21,16 @@ def predict(data: dict):
         if "image" not in data:
             return {"error": "Missing 'image' key in data"}
         
-        # Tar emot bild från json
+        # Receiving image from json
         image = data["image"]
         
-        if len(image) != 32*32*3:
+        if len(image) != 3072:
             return {"error": f"Invalid image size. Expected 3072, got {len(image)}"}
         
-        # Omvandla till rätt format [1, 3, 32, 32]
+        # Convert to the correct format [1, 3, 32, 32]
         input_array = np.array(image).reshape(1, 3, 32, 32).astype(np.float32)
         
-        # Kör modellen
+        # Run the model
         results = model.run(None, {"input": input_array})
         predictions = results[0][0]
         
