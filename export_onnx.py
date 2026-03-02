@@ -1,14 +1,30 @@
+<<<<<<< HEAD
+import torch    
+=======
 import torch
+>>>>>>> d6597a46b59309c669f9834e5fc80735a72a9042
 import torch.onnx
 import os
 # Import the model architecture from the src folder
 from src.model import SimpleCNN
-
+#bra kod!
 def export_model():
+<<<<<<< HEAD
+    # Create an instance of the model based on the architecture defined in src/model.py
+    model = SimpleCNN()
+
+    # Load the trained model weights from the K2 assignment
+    weights_path = "model_weights.pth" # ska vara src/model_weights.pth 
+ 
+    if not os.path.exists(weights_path):
+        print(f"ERROR: {weights_path} not found.")
+        return
+=======
     """
     This script exports the trained PyTorch model to ONNX format.
     This is a requirement for the M3 project (Model Integration).
     """
+>>>>>>> d6597a46b59309c669f9834e5fc80735a72a9042
     
     # 1. Initialize the model architecture
     model = SimpleCNN()
@@ -30,6 +46,11 @@ def export_model():
     # 4. Create a dummy input tensor matching the CIFAR-10 shape (1, 3, 32, 32)
     dummy_input = torch.randn(1, 3, 32, 32)
 
+<<<<<<< HEAD
+    # Export the model to ONNX format
+    onnx_path = 'model.onnx' #bättre att spara i model/ för att hålla ordning
+    print(f"Exporting model to '{onnx_path}'...")
+=======
     # 5. Export the model to ONNX format
     onnx_file = "model.onnx"
     print(f"Exporting model to '{onnx_file}'...")
@@ -50,6 +71,11 @@ def export_model():
         
     except Exception as e:
         print(f"An error occurred during the ONNX export: {e}")
+>>>>>>> d6597a46b59309c669f9834e5fc80735a72a9042
 
 if __name__ == "__main__":
     export_model()
+<<<<<<< HEAD
+
+=======
+>>>>>>> d6597a46b59309c669f9834e5fc80735a72a9042
